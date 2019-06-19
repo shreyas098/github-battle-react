@@ -1,4 +1,33 @@
 var React= require ('react');
+var PropTypes=require('prop-types');
+function SelectLanguage(props)
+{var languages=['All','JavaScript','Ruby','CSS','Python'];
+    return(
+<ul className='languages'>
+            {
+                languages.map(function(name)
+                {
+                    return(
+                        <li
+                        style={
+                            name===props.selectedLanguage ? {color:'#FF0000'}:null
+                        }
+                        key={name}
+                        onClick={props.onSelect.bind(null,name)}>
+                            {name}
+                            </li>
+                    )
+
+                    
+                })
+            }
+        </ul>
+    )
+}
+SelectLanguage.PropTypes={
+    SelectLanguage:PropTypes.string.isRequired,
+    updateLanguage:PropTypes.func.isRequired,
+}
 class Popular  extends React.Component{
 
     constructor(props){
@@ -11,7 +40,7 @@ class Popular  extends React.Component{
     updateLanguage(name){
         this.setState(function(){
             return{
-            selectedLanguage :name
+            selectedLanguage:name
         }
         });
     }
@@ -20,26 +49,9 @@ class Popular  extends React.Component{
      
         var languages=['All','JavaScript','Ruby','CSS','Python'];
     return(
-        <ul className='languages'>
-            {
-                languages.map(function(name)
-                {
-                    return(
-                        <li
-                        style={
-                            name===this.state.selectedLanguage ? {color:'#FF0000'}:null
-                        }
-                        key={name}
-                        onClick={this.updateLanguage.bind(null,name)}>
-                            {name}
-                            </li>
-                    )
-
-                    
-                },this)
-            }
-        </ul>
-    
+        <SelectLanguage
+        selectedLanguage={this.state.selectedLanguage}
+        onSelect={this.updateLanguage}/>
     )
  }
 }
