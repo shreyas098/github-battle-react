@@ -5,7 +5,8 @@ var HtmlWebpackplugin=require('html-webpack-plugin');
      output:
     {
         path:path.resolve(__dirname,'dist'),
-        filename:'index_bundle.js'
+        filename:'index_bundle.js',
+        publicPath:'/'
     },
     module:{
         rules:[
@@ -13,6 +14,9 @@ var HtmlWebpackplugin=require('html-webpack-plugin');
             {test:/\.(css)$/,use:['style-loader','css-loader']}
         ]
 
+    },
+    devServer:{
+    historyApiFallback:true
     },
     mode: 'development',
     plugins:[
