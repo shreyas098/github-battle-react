@@ -1,5 +1,6 @@
 var React = require('react');
 var PropTypes=require('prop-types');
+var Link =require('react-router-dom').Link
 function PlayerPreview(props){
 return(
   <div>
@@ -12,7 +13,7 @@ return(
       <h2 className='username'>@{props.username}</h2>
     </div>
     <button
-    className='Reset'
+    className='reset'
     onClick={props.onReset.bind(null,props.id)}
     >
       Reset
@@ -111,6 +112,7 @@ handleReset(id){
    });
 }
   render() {
+    var match=this.props.match;
     var playerOneName=this.state.playerOneName;
     var playerTwoName=this.state.playerTwoName;
     var playerOneImage=this.state.playerOneImage;
@@ -147,7 +149,13 @@ handleReset(id){
           id='playerTwo'
           /> }
         </div>
-
+            {
+              playerOneImage && playerTwoImage &&
+              <Link className='button' to = {{
+                pathname :match.url+'/results',
+                search:'?playerOneName='+playerOneName+'&playerTwoName='+playerTwoName
+              }} > Battle </Link>
+            }
       </div>
     )
   }

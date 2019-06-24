@@ -1,5 +1,6 @@
 var React= require ('react');
 var Popular=require('./Popular');
+var Results=require('./Results');
 var ReactRouter=require('react-router-dom');
 var Router=ReactRouter.BrowserRouter;
 var Route=ReactRouter.Route;
@@ -18,6 +19,7 @@ class App  extends React.Component{
              <Switch>
              <Route exact path='/' component={Web}/>
               <Route exact path='/battle' component={Battle}/>
+              <Route exact path='/battle/results' component={Results}/>
             <Route path='/popular' component={Popular}/>
             <Route render={function(){
                return <p>Not Found</p>
