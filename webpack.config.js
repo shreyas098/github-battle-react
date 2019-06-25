@@ -18,7 +18,7 @@ var HtmlWebpackplugin=require('html-webpack-plugin');
     devServer:{
     historyApiFallback:true
     },
-    mode: 'development',
+    mode: process.env.NODE_ENV==='production'?'production':'development',
     plugins:[
         new HtmlWebpackplugin({
             template:'./app/index.html'

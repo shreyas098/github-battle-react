@@ -1,6 +1,7 @@
 var React= require ('react');
 var propTypes=require('prop-types');
 var api=require('../utils/api');
+var Loading=require('./Loading')
 function RepoGrid(props){
 return(
     <ul className='popular-list'>
@@ -97,7 +98,7 @@ class Popular  extends React.Component{
         <SelectLanguage
         selectedLanguage={this.state.selectedLanguage}
         onSelect={this.updateLanguage}/>
-       {!this.state.repos?<p>LOADING</p>:<RepoGrid repos={this.state.repos}/>}
+       {!this.state.repos?<Loading />:<RepoGrid repos={this.state.repos}/>}
         </div>
     )
  }
