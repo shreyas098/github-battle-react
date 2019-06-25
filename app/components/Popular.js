@@ -1,6 +1,6 @@
 var React= require ('react');
 var propTypes=require('prop-types');
-var api=require('../util/api.js');
+var api=require('../utils/api');
 function RepoGrid(props){
 return(
     <ul className='popular-list'>
